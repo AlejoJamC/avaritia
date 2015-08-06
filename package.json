@@ -1,0 +1,38 @@
+{
+  "name": "avaritia",
+  "version": "0.1.0",
+  "description": "Credit simulator for personal banking ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://alejojamc@github.com/AlejoJamC/avaritia.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "personal",
+    "banking",
+    "rest",
+    "restful"
+  ],
+  "author": "@AlejoJamC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlejoJamC/avaritia/issues"
+  },
+  "homepage": "https://github.com/AlejoJamC/avaritia#readme",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.13.2",
+    "express": "~4.13.1",
+    "jade": "~1.11.0",
+    "morgan": "~1.6.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.4.0"
+  }
+}
