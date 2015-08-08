@@ -32,21 +32,19 @@ AVARITIA es una herramienta que provee datos a nivel informativo al calcular un 
 
 ###Tipos de crédito de consumo###
 
-En términos generales podemos diferenciar tres tipos de crédito de consumo bien definidos: el crédito de libre inversión, el crédito de libranza y el crédito de cupo rotativo. A continuación analizamos las características de cada uno de estos préstamos.
+En términos generales podemos diferenciar tres tipos de crédito de consumo bien definidos: el crédito de libre inversión, el crédito de libranza y el crédito de cupo rotativo. A continuación analizamos las características de cada uno de estos préstamos.[2]
 
-**Crédito de Libre Inversión.** Es un crédito que permite financiar cualquier necesidad, incluyendo bienes y servicios. Como su nombre lo indica, es un crédito de libre disponibilidad, ya que cada persona puede destinar el monto solicitado según sus deseos. Normalmente este tipo de crédito es utilizado para financiar viajes, adquirir productos para el hogar, cancelar servicios y financiar gastos vinculados con la salud o la educación.
+**Crédito de Libre Inversión.** Es un crédito que permite financiar cualquier necesidad, incluyendo bienes y servicios. Como su nombre lo indica, es un crédito de libre disponibilidad, ya que cada persona puede destinar el monto solicitado según sus deseos. Normalmente este tipo de crédito es utilizado para financiar viajes, adquirir productos para el hogar, cancelar servicios y financiar gastos vinculados con la salud o la educación. Una ventaja de los créditos de libre inversión es que suelen tener requisitos flexibles, especialmente cuando los montos solicitados son bajos.[2]
 
-Una ventaja de los créditos de libre inversión es que suelen tener requisitos flexibles, especialmente cuando los montos solicitados son bajos.
+**Crédito de Libranza.** Son la alternativa ideal para aquellos clientes que buscan un crédito seguro, cómodo y simple. La principal ventaja de este tipo de préstamos es que la cuota se abona mes a mes en forma automática por medio del salario del tomador. Así, mensualmente se descuenta el valor de la cuota del sueldo del cliente, dejando atrás preocupaciones vinculadas con los pagos y los vencimientos.[2]
 
-**Crédito de Libranza.** Son la alternativa ideal para aquellos clientes que buscan un crédito seguro, cómodo y simple. La principal ventaja de este tipo de préstamos es que la cuota se abona mes a mes en forma automática por medio del salario del tomador. Así, mensualmente se descuenta el valor de la cuota del sueldo del cliente, dejando atrás preocupaciones vinculadas con los pagos y los vencimientos.
-
-**Crédito de Cupo Rotativo** Este tipo de crédito de consumo es una excelente opción para aquellas personas que desean tener acceso a un cupo de dinero, que pueden retirar cuando lo deseen. El cupo puede ser retirado en forma total o parcial y el saldo se reprograma en varios meses. El cupo crece a medida que la persona realiza pagos y está en condiciones de hacer nuevos retiros.
+**Crédito de Cupo Rotativo** Este tipo de crédito de consumo es una excelente opción para aquellas personas que desean tener acceso a un cupo de dinero, que pueden retirar cuando lo deseen. El cupo puede ser retirado en forma total o parcial y el saldo se reprograma en varios meses. El cupo crece a medida que la persona realiza pagos y está en condiciones de hacer nuevos retiros.[2]
 
 ###Otras modalidades de Crédito###
 
-**Tarjetas de crédito.** Son útiles para adquisiciones a corto plazo. La principal ventaja de una tarjeta de crédito es la temporalidad, ya que permite disponer de dinero que no se tiene al momento pero que va a recibir en un futuro inmediato. 
+**Tarjetas de crédito.** Son útiles para adquisiciones a corto plazo. La principal ventaja de una tarjeta de crédito es la temporalidad, ya que permite disponer de dinero que no se tiene al momento pero que va a recibir en un futuro inmediato. [3]
 
-**Créditos específicos.** Muchas instituciones ofrecen financiamientos especializados, por ejemplo, hipotecarios, educativos y automotrices, entre otros. Esto significa que la cantidad que te ofrezcan podrá ser utilizada únicamente en un objetivo y se debe poder comprobar su final destinación. La ventaja de estos créditos es precisamente su especialización, ya que los montos y los planes de pago están diseñados de acuerdo al objetivo. 
+**Créditos específicos.** Muchas instituciones ofrecen financiamientos especializados, por ejemplo, hipotecarios, educativos y automotrices, entre otros. Esto significa que la cantidad que te ofrezcan podrá ser utilizada únicamente en un objetivo y se debe poder comprobar su final destinación. La ventaja de estos créditos es precisamente su especialización, ya que los montos y los planes de pago están diseñados de acuerdo al objetivo. [3]
 
 
 
@@ -57,6 +55,11 @@ Una ventaja de los créditos de libre inversión es que suelen tener requisitos 
 
 ## REFERENCIAS ##
 
-* [Créditos de consumo y tarjetas de crédito, las deudas más comunes de los colombianos](http://www.elpais.com.co/elpais/economia/noticias/creditos-libre-inversion-y-tarjetas-credito-deudas-comunes-hogares-colombianos)
+1. [Créditos de consumo y tarjetas de crédito, las deudas más comunes de los colombianos](http://www.elpais.com.co/elpais/economia/noticias/creditos-libre-inversion-y-tarjetas-credito-deudas-comunes-hogares-colombianos)
     + Publicación [Diario El Pais](http://www.elpais.com.co), Noviembre 2014     
 
+2. [Tipos de crédito de consumo]
+(http://www.creditos.com.co/tipos-de-credito-de-consumo.html)
+    + Publicación [creditos.com.co](http://www.creditos.com.co/), Marzo 2013
+3. [Otras modalidades de Crédito](http://www.finanzaspracticas.com.co/finanzaspersonales/entienda/que_es/tipos.php)
+    + Publicacion [finanzaspracticas.com.co](http://www.finanzaspracticas.com.co)
