@@ -1,6 +1,6 @@
 # AVARITIA #
 
-Simulador de crédito para banca personal (Interfaz de Usuario)
+Simulador de crédito para banca personal.
 
 Traducciones:
 
@@ -14,7 +14,7 @@ Los créditos de consumo y tarjetas de crédito son las deudas más comunes de l
 
 La idea de los créditos es facilitar la consecución de metas y no volverse un dolor de cabeza para quien los toma. Siendo así es importante que los colombianos controlen sus finanzas personales y se endeuden sólo hasta donde son capaces de pagar; hoy en día existen muchas aplicaciones de control de finanzas donde cada mes pueden registrar sus ingresos y sus gastos, como un control de su capacidad de pago, entonces a la hora de pedir un credito es muy importante conocer el monto que son capaces de pagar como cuota de crédito, pues esto dependiendo del monto solicitado esta ligado al plazo en que deberian tomar un crédito para no sobrepasar su capacidad de pago.
 
-AVARITIA es una herramienta que provee datos a nivel informativo al calcular un aproximado de la cuota o el plazo de un crédito dependendiendo de la tasa de interes que ofrezca cada banco y el tipo de crédito deseado, y si estos datos son incluidos en las apliaciones existente de control de finanzas personales el usuario podra minimizar el riesgo que existe de comprometer la estabilidad económica por desconocer la importancia de capacidad y límite de endeudamiento.
+**AVARITIA** es una herramienta que provee datos a nivel informativo al calcular un aproximado de la cuota o el plazo de un crédito dependendiendo de la tasa de interes que ofrezca cada banco y el tipo de crédito deseado, y si estos datos son incluidos en las apliaciones existente de control de finanzas personales el usuario podra minimizar el riesgo que existe de comprometer la estabilidad económica por desconocer la importancia de capacidad y límite de endeudamiento.
 
 
 ## OBJETIVOS ##
