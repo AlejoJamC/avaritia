@@ -60,6 +60,9 @@ Es la expresión porcentual del interés aplicado sobre un capital. Las tasas de
 
 **Tasa de Interés Variable** El financiamiento con tasa variable es aquel en que la tasa de interés de su préstamo puede cambiar, en base a la tasa preferencial u otro tipo denominada “índice”. Con un préstamo de tasa variable, la tasa de interés del préstamo cambia a medida que la tasa de índice cambia, es decir que podría subir o bajar. Debido a que su tasa de interés puede subir, su pago mensual también puede subir. Cuanto más largo el plazo del préstamo, más arriesgado un préstamo de tasa variable puede ser para un prestatario, porque hay más tiempo para que aumenten las tasas.[5]
 
+En Colombia el índice variable esta determinado por la DTF, es la tasa de interés que en promedio se comprometieron a pagar a los ahorradores los bancos, las corporaciones de ahorro y vivienda, las corporaciones financieras y las compañías de financiamiento comercial por los certificados de depósito a término (CDT) con plazo de 90 días abiertos durante la última semana. El Banco de la República calcula la DTF el viernes de cada semana, con base en los CDT abiertos entre el viernes de la semana anterior y el jueves de la semana que está terminando. La vigencia de la DTF dada a conocer por el Banco de la República cada viernes va del lunes hasta el domingo siguientes. [6]
+ 
+
 
 ## REFERENCIAS ##
 
@@ -78,3 +81,6 @@ Es la expresión porcentual del interés aplicado sobre un capital. Las tasas de
     
 5. [Tipos de Tasa de Financiamiento](http://www.consumerfinance.gov/es/obtener-respuestas/c/comprar-un-vehiculo/757/cual-es-la-diferencia-entre-financiamiento-de-tasa-fija-y-de-tasa-variable.html)
     + Respuestas Comunes [consumerfinance.gov](http://www.consumerfinance.gov/)
+
+6. [Qué es la DTF](http://www.eltiempo.com/archivo/documento/MAM-541703)
+    + Publicación [El Tiempo](http://www.eltiempo.com/), Abril 2001
