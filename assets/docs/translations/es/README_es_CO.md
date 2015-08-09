@@ -46,11 +46,19 @@ En términos generales podemos diferenciar tres tipos de crédito de consumo bie
 
 **Créditos específicos.** Muchas instituciones ofrecen financiamientos especializados, por ejemplo, hipotecarios, educativos y automotrices, entre otros. Esto significa que la cantidad que te ofrezcan podrá ser utilizada únicamente en un objetivo y se debe poder comprobar su final destinación. La ventaja de estos créditos es precisamente su especialización, ya que los montos y los planes de pago están diseñados de acuerdo al objetivo. [3]
 
+### Tasas de Interés ###
 
+Es la expresión porcentual del interés aplicado sobre un capital. Las tasas de interés pueden estar expresadas en términos nominales o efectivos. Las nominales son aquellas en que el pago de intereses no se capitaliza, mientras que las efectivas corresponden a las tasas de intereses anuales equivalentes a la capitalización de los intereses periódicos, bien sea anticipadas o vencidas. La tasa de interés efectiva es el instrumento apropiado para medir y comparar el rendimiento de distintas alternativas de inversión. Las tasas nominales pueden tener periodicidad mensual, trimestral, semestral o cualquier otra que se establezca.[4]
 
+**Tasa de Interés Efectiva** Expresión anual del interés nominal dependiendo de la periodicidad con que éste último se pague. Implica reinversión o capitalización de intereses.[4]
 
+**Tasa de Interés Vencida** Tasa de interés que una vez acordada, se paga o se cobra al finalizar cada periodo.[4]
 
+### Tipos de Tasa de Financiamiento ###
 
+**Tasa de Interés Fija** El financiamiento de tasa fija quiere decir que la tasa de interés de su préstamo no cambia durante la duración del préstamo. Con un tipo de interés fijo, usted puede predecir su pago mensual y el total que pagará durante la duración del préstamo. Es posible que prefiera tipos fijos, si está buscando un pago del préstamo que no fluctúe.[5]
+
+**Tasa de Interés Variable** El financiamiento con tasa variable es aquel en que la tasa de interés de su préstamo puede cambiar, en base a la tasa preferencial u otro tipo denominada “índice”. Con un préstamo de tasa variable, la tasa de interés del préstamo cambia a medida que la tasa de índice cambia, es decir que podría subir o bajar. Debido a que su tasa de interés puede subir, su pago mensual también puede subir. Cuanto más largo el plazo del préstamo, más arriesgado un préstamo de tasa variable puede ser para un prestatario, porque hay más tiempo para que aumenten las tasas.[5]
 
 
 ## REFERENCIAS ##
@@ -61,5 +69,12 @@ En términos generales podemos diferenciar tres tipos de crédito de consumo bie
 2. [Tipos de crédito de consumo]
 (http://www.creditos.com.co/tipos-de-credito-de-consumo.html)
     + Publicación [creditos.com.co](http://www.creditos.com.co/), Marzo 2013
+    
 3. [Otras modalidades de Crédito](http://www.finanzaspracticas.com.co/finanzaspersonales/entienda/que_es/tipos.php)
     + Publicacion [finanzaspracticas.com.co](http://www.finanzaspracticas.com.co)
+    
+4. [Tasa de Interés](https://www.superfinanciera.gov.co/SFCant/Glosario/glosario-t.htm#TASA DE INTERÉS EFECTIVA)
+    + Glosario [Superfinanciera](https://www.superfinanciera.gov.co)
+    
+5. [Tipos de Tasa de Financiamiento](http://www.consumerfinance.gov/es/obtener-respuestas/c/comprar-un-vehiculo/757/cual-es-la-diferencia-entre-financiamiento-de-tasa-fija-y-de-tasa-variable.html)
+    + Respuestas Comunes [consumerfinance.gov](http://www.consumerfinance.gov/)
