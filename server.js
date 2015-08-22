@@ -1,60 +1,85 @@
+/**
+ * Module dependencies
+ */
 var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
+var jade = require('jade');
+var routes = require('./routes/routes');
+var Logger = require('./config/logger');
+var logger = Logger.logger;
+// TODO: Enviar la configuracion de conexion a base de datos a un archivo de configuracion
+var mongoose = require('mongoose');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+// Choose the environment of work
+var environment = 'devLocal';
+logger.info('Chose the work environment: ' + environment);
+var config = require('./config/environment.json')[environment];
+logger.info('API version: ' + config.version);
 
+// Mongoose connection logger
+mongoose.connect('mongodb://localhost:27017/' + config.nosqlDB);
+logger.info('Connecting to MongoDB server, database: ' + config.nosqlDB);
+var con = mongoose.connection;
+con.once('open', function () {
+  logger.info('Connected to MongoDB successfully!');
+});
+
+// Create our express application
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// Set view engine to jade
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
+// Using body-parser in our application
+// create application/json parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// create application/x-www-form-urlencoded parser
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
-app.use('/', routes);
-app.use('/users', users);
+//logger.debug("Overriding 'Express' logger");
+// TODO: Solucionar este mensaje: morgan deprecated morgan(options): use morgan("default", options) instead
+// TODO: Solucionar este mensaje: morgan deprecated default format: use combined format
+//app.use(require('morgan')({ "stream": logger.stream }));
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+// Use express session support since OAuth2orize requires it
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: '1f u c4n r34d th1s u r34lly n33d t0 g37 l41d'
+}));
+
+// Set header 'X-Powered-By'
+logger.info('API powered by: @AlejoJamC');
+app.use(function (req, res, next) {
+  res.set('X-Powered-By', 'Alejandro Mantilla < @AlejoJamC >');
+  next();
 });
 
-// error handlers
+// Use the passport package in our application
+app.use(passport.initialize());
 
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
+// Path to our public directory
+app.use(express.static(__dirname + '/public'));
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+//ROUTER
+//Create our Express router
+var router  = express.Router();
 
+// Setup all routes on express router
+routes.setupRouter(router);
 
-module.exports = app;
+// Use our environment defined port or value on our config file /config/environment.json
+var port = process.env.PORT || config.port;
+
+// Register all our routes with a prefix: /api or /v1
+// This poject is created to be hosted in a subdomain dedicated to authentication and authorization
+// Example of an URL with the prefix: auth.happyauth.com/v0
+app.use(config.version, router);
+
+// Start the server
+app.listen(port);
+logger.info('API running on http://localhost:' + port + config.version + '/');
