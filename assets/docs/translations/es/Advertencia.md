@@ -1,9 +1,9 @@
-#ADVERTENCIA#
+# ADVERTENCIA #
 
-##Renuncia##
+## Renuncia ##
 
-Las cifras que se presentan en **Avaritia** son de caracter informativo,las operaciones que se simulan en esta aplicación son sólo referenciales y no comprometen al sitio ni a un banco en particular ya que se hacen para efectos de comprensión de las operaciones y no para entregar valores reales de cuotas u otros montos.
+Las cifras que se presentan en **Avaritia** son de caracter informativo,las operaciones que se simulan en esta aplicaciï¿½n son sï¿½lo referenciales y no comprometen al sitio ni a un banco en particular ya que se hacen para efectos de comprensiï¿½n de las operaciones y no para entregar valores reales de cuotas u otros montos.
 
-Para precisar los datos y/o aclarar dudas, debe consultar su caso particular directamente con el banco de su interés.
+Para precisar los datos y/o aclarar dudas, debe consultar su caso particular directamente con el banco de su interï¿½s.
 
-Debe tenerse presente que el cliente debe cumplir con todos los requisitos exigidos por el banco para otorgar este tipo de créditos.
+Debe tenerse presente que el cliente debe cumplir con todos los requisitos exigidos por el banco para otorgar este tipo de crï¿½ditos.

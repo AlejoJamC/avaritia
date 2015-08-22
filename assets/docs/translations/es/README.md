@@ -1,4 +1,4 @@
-# avaritiaUI #
+# AVARITIA #
 
 Simulador de crédito para banca personal (Interfaz de Usuario)
 

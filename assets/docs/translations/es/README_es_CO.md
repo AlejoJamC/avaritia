@@ -1,4 +1,5 @@
 # AVARITIA #
+(pronunciese como AVARI**TS**IA)
 
 Simulador de crédito para banca personal.
 

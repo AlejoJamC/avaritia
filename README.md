@@ -1,4 +1,6 @@
-# avaritia
+# AVARITIA #
+(pronounced ts as tsee, sound AVARI**TS**IA)
+
 Credit simulator for personal banking
 
 Language Translations:
