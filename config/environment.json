@@ -1,18 +1,18 @@
 {
   "devLocal": {
-    "nosqlDB":"avaritia",
-    "port": 3500,
+    "nosqlDB":"estoybien",
+    "port": 6500,
     "version": "/v0"
   },
 
   "devServer": {
-    "nosqlDB":"avaritia",
-    "port": 3500,
+    "nosqlDB":"estoybien",
+    "port": 3000,
     "version": "/v0"
   },
 
   "production": {
-    "nosqlDB":"avaritia",
+    "nosqlDB":"estoybien",
     "port": 3000,
     "version": "/v1"
   }
