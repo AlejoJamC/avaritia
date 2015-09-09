@@ -2,7 +2,49 @@
 var logger = require('../config/logger').logger;
 var Language = require('../models/languages').Languages;
 
+// ENDPOINT: /languages METHOD: GET
+// ENDPOINT: /languages?name=value METHOD: GET
+// ENDPOINT: /languages?iso=value METHOD: GET
+exports.getLanguages = function(req, res){
+    // Assign all filters in a var to search
+    var name = req.query.name;
+    var isoName = req.query.iso;
 
+    if( (typeof type === 'undefined') && (typeof isoName === 'undefined') ){
+        // Use the 'Language' model to find all languages
+        Language.find(function (err, langs) {
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+            // success
+            res.json(langs);
+        });
+    }else if(typeof isoName === 'undefined'){
+        // Use the 'Language' model to find all records filter by name
+        Language.find({ name : name}, function (err, langname) {
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+            // Success
+            res.json(langname);
+        });
+    }else{
+        // Use the 'Language' model to find all records filter by isoName
+        Language.find({ 'isoName' : isoName}, function (err, isoName) {
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+            // Success
+            res.json(isoName);
+        });
+    }
+};
 
 // ENDPOINT: /languages/:id METHOD: GET
 exports.getLanguageById = function(req, res){
