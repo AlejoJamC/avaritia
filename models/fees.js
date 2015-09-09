@@ -7,17 +7,18 @@ var Bank = require('./banks').Banks;
 var Rate = require('./rates').Rates;
 var Service = require('./services').Services;
 var Language = require('./languages').Languages;
+var Currency = require('./currencies').Currencies;
 
 // Define our Fee schema
 var FeeSchema = new Schema({
     rate: [Rate.schema],
     service: [Service.schema],
-    income: String,
+    income: Number,
     amountSalaries: Number,
-    valueLoan: String,
+    valueLoan: Number,
     deadlineMonths: Number,
-    symbol: String,
     bank: [Bank.schema],
+    currency: [Currency.schema],
     lang: [Language.schema],
     creationDate: Date,
     lastEditionDate: Date,

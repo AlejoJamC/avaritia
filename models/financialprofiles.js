@@ -8,7 +8,7 @@ var User = require('./users').User;
 // Define our Financial Profile schema
 var FinancialProfileSchema = new Schema({
     user: [User.schema],
-    income: String,
+    income: Number,
     amountSalaries: Number,
     creationDate: Date,
     lastEditionDate: Date,
