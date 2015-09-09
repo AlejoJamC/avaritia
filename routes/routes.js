@@ -93,15 +93,15 @@ function setupRouter (router){
         // ENDPOINT: /services
         // ENDPOINT: /services?name=value
     router.route('/services')
-        .get(authRoutes.isAuthenticated, serviceRoutes.getLanguages)
-        .post(authRoutes.isAuthenticated, serviceRoutes.postLanguage);
+        .get(authRoutes.isAuthenticated, serviceRoutes.getServices)
+        .post(authRoutes.isAuthenticated, serviceRoutes.postService);
 
     // ENDPOINT: /services/:id
     router.route('/services/:id')
-        .get(authRoutes.isAuthenticated, serviceRoutes.getLanguageById)
-        .put(authRoutes.isAuthenticated, serviceRoutes.putLanguage)
-        .patch(authRoutes.isAuthenticated, serviceRoutes.patchLanguage)
-        .delete(authRoutes.isAuthenticated, serviceRoutes.deleteLanguage);
+        .get(authRoutes.isAuthenticated, serviceRoutes.getServiceById)
+        .put(authRoutes.isAuthenticated, serviceRoutes.putService)
+        .patch(authRoutes.isAuthenticated, serviceRoutes.patchService)
+        .delete(authRoutes.isAuthenticated, serviceRoutes.deleteService);
     /**
      * ====================================================================
      */
