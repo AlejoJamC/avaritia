@@ -9,8 +9,6 @@ var jade = require('jade');
 var routes = require('./routes/routes');
 var Logger = require('./config/logger');
 var logger = Logger.logger;
-// TODO: Enviar la configuracion de conexion a base de datos a un archivo de configuracion
-var mongoose = require('mongoose');
 
 // Choose the environment of work
 var environment = 'devLocal';
@@ -19,12 +17,8 @@ var config = require('./config/environment.json')[environment];
 logger.info('API version: ' + config.version);
 
 // Mongoose connection logger
-mongoose.connect('mongodb://localhost:27017/' + config.nosqlDB);
-logger.info('Connecting to MongoDB server, database: ' + config.nosqlDB);
-var con = mongoose.connection;
-con.once('open', function () {
-  logger.info('Connected to MongoDB successfully!');
-});
+var mongoDB = require('./config/mongodb');
+mongoDB.setupMongoDB(config.nosqlDB);
 
 // Create our express application
 var app = express();
