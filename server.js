@@ -34,11 +34,6 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-//logger.debug("Overriding 'Express' logger");
-// TODO: Solucionar este mensaje: morgan deprecated morgan(options): use morgan("default", options) instead
-// TODO: Solucionar este mensaje: morgan deprecated default format: use combined format
-//app.use(require('morgan')({ "stream": logger.stream }));
-
 // Use express session support since OAuth2orize requires it
 app.use(session({
   resave: true,
