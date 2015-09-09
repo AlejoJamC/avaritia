@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 // Embebed Models
 var Language = require('./languages').Languages;
 
-// Define our Emotion schema
+// Define our Rates schema
 var RateSchema = new Schema({
     name: String,
     description: String,
