@@ -5,8 +5,8 @@ var Schema = mongoose.Schema;
 // Embebed Models
 var Language = require('./languages').Languages;
 
-// Define our Service schema
-var ServiceSchema = new Schema({
+// Define our Emotion schema
+var RateSchema = new Schema({
     name: String,
     description: String,
     lang: [Language.schema],
@@ -16,4 +16,4 @@ var ServiceSchema = new Schema({
 },{ versionKey: false });
 
 // Export the Mongoose model
-module.exports.Services = mongoose.model('Services', ServiceSchema);
+module.exports.Rates = mongoose.model('Rates', RateSchema);

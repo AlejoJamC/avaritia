@@ -1,6 +1,7 @@
 // Load required packages
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+
 // Define our Language schema
 var LanguageSchema = new Schema({
     name: String,
