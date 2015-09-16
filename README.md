@@ -1,5 +1,5 @@
 # AVARITIA #
-(pronounced ts as tsee, sound AVARI**TS**IA)
+(pronounced ts as 'tsee' sound AVARI**TS**IA)
 
 Credit simulator for personal banking
 
