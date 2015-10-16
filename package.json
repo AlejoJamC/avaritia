@@ -43,5 +43,6 @@
   },
   "devDependencies": {
     "nodemon": "^1.4.0"
+    "jshint": "^2.8.0",
   }
 }
