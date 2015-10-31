@@ -131,9 +131,9 @@ exports.patchLanguage = function(req, res){
             }
             var message = '';
             if(lang.enabled === true){
-                message = 'Languages enabled successfully';
+                message = 'Language enabled successfully';
             }else{
-                message = 'Languages disbled successfully';
+                message = 'Language disbled successfully';
             }
             // success
             res.json({message: message, data: lang });
