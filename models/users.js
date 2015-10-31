@@ -27,7 +27,10 @@ UserSchema.pre('save', function (callback) {
     var user = this;
 
     // Break out if the password hasn't changed
-    if(!user.isModified('password')) return callback();
+    if(!user.isModified('password'))
+    {
+        return callback();
+    }
 
     // Password changed so we need to hash it
     bcrypt.genSalt(5, function (err, salt) {
@@ -47,7 +50,7 @@ UserSchema.pre('save', function (callback) {
             user.password = hash;
             callback();
         });
-    })
+    });
 });
 
 UserSchema.methods.verifyPassword = function (password, callback) {
