@@ -150,7 +150,7 @@ function setupRouter (router){
 
     // ENDPOINT: /deadlines/:id
     router.route('/deadlines/:id')
-        .get(authRoutes.isAuthenticated, deadlineRoutes.getDeadline)
+        .get(authRoutes.isAuthenticated, deadlineRoutes.getDeadlineById)
         .put(authRoutes.isAuthenticated, deadlineRoutes.putDeadline)
         .patch(authRoutes.isAuthenticated, deadlineRoutes.patchDeadline)
         .delete(authRoutes.isAuthenticated, deadlineRoutes.deleteDeadline);
@@ -170,7 +170,7 @@ function setupRouter (router){
 
     // ENDPOINT: /fees/:id
     router.route('/fees/:id')
-        .get(authRoutes.isAuthenticated, feeRoutes.getFee)
+        .get(authRoutes.isAuthenticated, feeRoutes.getFeeById)
         .put(authRoutes.isAuthenticated, feeRoutes.putFee)
         .patch(authRoutes.isAuthenticated, feeRoutes.patchFee)
         .delete(authRoutes.isAuthenticated, feeRoutes.deleteFee);
@@ -190,7 +190,7 @@ function setupRouter (router){
 
     // ENDPOINT: /financial/profiles/:id
     router.route('/financial/profiles/:id')
-        .get(authRoutes.isAuthenticated, financialProfileRoutes.getFinancialProfile)
+        .get(authRoutes.isAuthenticated, financialProfileRoutes.getFinancialProfileById)
         .put(authRoutes.isAuthenticated, financialProfileRoutes.putFinancialProfile)
         .patch(authRoutes.isAuthenticated, financialProfileRoutes.patchFinancialProfile)
         .delete(authRoutes.isAuthenticated, financialProfileRoutes.deleteFinancialProfile);
