@@ -1,6 +1,13 @@
 // Load required packages
 var logger = require('../config/logger').logger;
 var Amounts = require('../models/amounts').Amounts;
+// Embebed Models
+var Bank = require('../models/banks').Banks;
+var Rate = require('../models/rates').Rates;
+var Service = require('../models/services').Services;
+var Language = require('../models/languages').Languages;
+var Currency = require('../models/currencies').Currencies;
+
 
 // ENDPOINT: /amounts METHOD: GET
 exports.getAmounts = function(req, res){
@@ -44,10 +51,28 @@ exports.postAmount = function (req, res) {
     var amount = new Amounts();
 
     // Set the country properties that came from the POST data
-    amount.name = req.body.name;
+    amount.monthlyValue = req.body.monthlyValue;
+    amount.amountMonths = req.body.amountMonths;
     amount.creationDate = Date.now();
     amount.lastEditionDate = Date.now();
     amount.enabled = true;
+
+    // Embeded documents
+    var bank = new Bank();
+    bank._id = req.body.bank._id;
+    amount.bank.push(bank);
+    var rate = new Rate();
+    rate._id = req.body.rate._id;
+    amount.rate.push(rate);
+    var service = new Service();
+    service._id = req.body.service._id;
+    amount.service.push(service);
+    var language = new Language();
+    language._id = req.body.language._id;
+    amount.language.push(language);
+    var currency = new Currency();
+    currency._id = req.body.currency._id;
+    amount.currency.push(currency);
 
     amount.save(function(err){
         // Check for errors and show message
@@ -69,11 +94,47 @@ exports.putAmount = function(req, res){
             res.send(err);
         }
 
-        // Set the country properties that came from the PUT data
-        amount.name = req.body.name;
-        amount.creationDate = req.body.creationDate;
+        // deleted all embeded fields
+        amount.update({
+            $set:{
+                bank:[],
+                rate:[],
+                service:[],
+                language:[],
+                currency:[]
+            }
+        }, function (err, affected) {
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+        });
+
+
+        // Set the country properties that came from the POST data
+        amount.monthlyValue = req.body.monthlyValue;
+        amount.amountMonths = req.body.amountMonths;
+        amount.creationDate = Date.now();
         amount.lastEditionDate = Date.now();
-        amount.enabled = req.body.enabled;
+        amount.enabled = true;
+
+        // Embeded documents
+        var bank = new Bank();
+        bank._id = req.body.bank._id;
+        amount.bank.push(bank);
+        var rate = new Rate();
+        rate._id = req.body.rate._id;
+        amount.rate.push(rate);
+        var service = new Service();
+        service._id = req.body.service._id;
+        amount.service.push(service);
+        var language = new Language();
+        language._id = req.body.language._id;
+        amount.language.push(language);
+        var currency = new Currency();
+        currency._id = req.body.currency._id;
+        amount.currency.push(currency);
 
         amount.save(function(err){
             // Check for errors and show message
