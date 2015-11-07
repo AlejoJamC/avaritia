@@ -9,7 +9,7 @@ var Language = require('./languages').Languages;
 var RateSchema = new Schema({
     name: String,
     description: String,
-    lang: [Language.schema],
+    language: [Language.schema],
     creationDate: Date,
     lastEditionDate: Date,
     enabled: Boolean

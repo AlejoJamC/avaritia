@@ -18,7 +18,7 @@ var AmountSchema = new Schema({
     amountMonths: Number,
     bank: [Bank.schema],
     currency: [Currency.schema],
-    lang: [Language.schema],
+    language: [Language.schema],
     creationDate: Date,
     lastEditionDate: Date,
     enabled: Boolean
