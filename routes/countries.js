@@ -1,14 +1,18 @@
 // Load required packages
+var S = require('string');
 var logger = require('../config/logger').logger;
 var Countries = require('../models/countries').Countries;
 
-// ENDPOINT: /cuentries METHOD: GET
-// ENDPOINT: /cuentries?name=value METHOD: GET
+// ENDPOINT: /countries METHOD: GET
+// ENDPOINT: /countries?name=value METHOD: GET
+// TODO: evitar repetir codigo y mejorar el sistema de queries
 exports.getCountries = function(req, res){
     // Assign all filters in a var to search
     var name = req.query.name;
 
     if(typeof name !== 'undefined'){
+        name = name.toLowerCase();
+        name = S(name).capitalize().s;
         // Use the model to find all records filter by name
         Countries.find({ name : name}, function (err, coutryName) {
             // Check for errors and show message

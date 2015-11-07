@@ -52,18 +52,21 @@ exports.getServiceById = function(req, res){
 exports.postService = function (req, res) {
     // Create a new instance of the Service model
     var service = new Services();
-    var lang = new Language();
+
 
     // Set the Service properties that came from the POST data
     service.name = req.body.name;
     service.description = req.body.description;
+    service.creationDate = Date.now();
+    service.lastEditionDate = Date.now();
+    service.enabled = true;
+
+    // Add embeded document
+    var lang = new Language();
     lang._id = req.body.language._id;
     lang.name = req.body.language.name;
     lang.isoName = req.body.language.isoName;
     service.lang.push(lang);
-    service.creationDate = Date.now();
-    service.lastEditionDate = Date.now();
-    service.enabled = true;
 
     service.save(function(err){
         // Check for errors and show message
@@ -96,18 +99,19 @@ exports.putService = function(req, res){
             logger.info('Delete all languages to insert modified');
         });
 
-        var lang = new Language();
-
         // Set the Service properties that came from the PUT data
         service.name = req.body.name;
         service.description = req.body.description;
+
+        service.creationDate = req.body.creationDate;
+        service.lastEditionDate = Date.now();
+        service.enabled = req.body.enabled;
+
+        var lang = new Language();
         lang._id = req.body.language._id;
         lang.name = req.body.language.name;
         lang.isoName = req.body.language.isoName;
         service.lang.push(lang);
-        service.creationDate = req.body.creationDate;
-        service.lastEditionDate = Date.now();
-        service.enabled = req.body.enabled;
 
         service.save(function(err){
             // Check for errors and show message

@@ -2,6 +2,9 @@
 var logger = require('../config/logger').logger;
 var Bank = require('../models/banks').Banks;
 
+// External Schema
+var Country = require('../models/countries').Countries;
+
 // TODO: agregar la ruta que actualice la calificacion
 
 // ENDPOINT: /banks METHOD: GET
@@ -58,9 +61,18 @@ exports.postBank = function (req, res) {
 
     // Set the country properties that came from the POST data
     bank.name = req.body.name;
+    bank.nit = req.body.nit;
+    bank.score = req.body.score;
+    bank.contact = req.body.contact;
     bank.creationDate = Date.now();
     bank.lastEditionDate = Date.now();
     bank.enabled = true;
+
+    // Add embeded document
+    var country = new Country();
+    country._id = req.body.country._id;
+    country.name = req.body.country.name;
+    bank.country.push(country);
 
     bank.save(function(err){
         // Check for errors and show message
@@ -82,11 +94,34 @@ exports.putBank = function(req, res){
             res.send(err);
         }
 
+        // Delete country field
+        bank.update({
+            $set:{
+                country:[]
+            }
+        }, function (err, affected) {
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+            logger.info('Deleted country filed');
+        });
+
         // Set the country properties that came from the PUT data
         bank.name = req.body.name;
+        bank.nit = req.body.nit;
+        bank.score = req.body.score;
+        bank.contact = req.body.contact;
         bank.creationDate = req.body.creationDate;
         bank.lastEditionDate = Date.now();
         bank.enabled = req.body.enabled;
+
+        // Add embeded document
+        var country = new Country();
+        country._id = req.body.country._id;
+        country.name = req.body.country.name;
+        bank.country.push(country);
 
         bank.save(function(err){
             // Check for errors and show message

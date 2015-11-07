@@ -1,6 +1,7 @@
 // Load required packages
 var logger = require('../config/logger').logger;
 var Rate = require('../models/rates').Rates;
+var Language = require('../models/languages').Languages;
 
 // ENDPOINT: /rates METHOD: GET
 // ENDPOINT: /rates?name=value METHOD: GET
@@ -54,9 +55,16 @@ exports.postRate = function (req, res) {
 
     // Set the rate properties that came from the POST data
     rate.name = req.body.name;
+    rate.description = req.body.description;
     rate.creationDate = Date.now();
     rate.lastEditionDate = Date.now();
     rate.enabled = true;
+
+    // add embeded document
+    var language = new Language();
+    language._id = req.body.language._id;
+    language.name = req.body.language.name;
+    rate.language.push(language);
 
     rate.save(function(err){
         // Check for errors and show message
@@ -78,11 +86,28 @@ exports.putRate = function(req, res){
             res.send(err);
         }
 
+        rate.update({ $set: {
+            language:[]
+        } }, function (err, affected) {
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+        });
+
         // Set the rate properties that came from the PUT data
         rate.name = req.body.name;
+        rate.description = req.body.description;
         rate.creationDate = req.body.creationDate;
         rate.lastEditionDate = Date.now();
         rate.enabled = req.body.enabled;
+
+        // add embeded document
+        var language = new Language();
+        language._id = req.body.language._id;
+        language.name = req.body.language.name;
+        rate.language.push(language);
 
         rate.save(function(err){
             // Check for errors and show message
