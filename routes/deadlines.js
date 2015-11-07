@@ -1,29 +1,130 @@
 // Load required packages
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var logger = require('../config/logger').logger;
+var Deadline = require('../models/deadlines').Deadlines;
 
-// Embebed Models
-var Bank = require('./banks').Banks;
-var Rate = require('./rates').Rates;
-var Service = require('./services').Services;
-var Language = require('./languages').Languages;
-var Currency = require('./currencies').Currencies;
+// ENDPOINT: /deadlines METHOD: GET
+exports.getDeadlines = function(req, res){
+    // Assign all filters in a var to search
 
-// Define our Deadlines schema
-var DeadlineSchema = new Schema({
-    rate: [Rate.schema],
-    service: [Service.schema],
-    income: Number,
-    amountSalaries: Number,
-    valueLoan: Number,
-    monthlyValue: Number,
-    bank: [Bank.schema],
-    currency: [Currency.schema],
-    lang: [Language.schema],
-    creationDate: Date,
-    lastEditionDate: Date,
-    enabled: Boolean
-},{ versionKey: false });
+    // Use the model to find all records filter by isoName
+    Deadline.find(function (err, deadlines) {
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+        // Success
+        res.json(deadlines);
+    });
 
-// Export the Mongoose model
-module.exports.Deadlines = mongoose.model('Deadlines', DeadlineSchema);
+};
+
+// ENDPOINT: /deadlines/:id METHOD: GET
+exports.getDeadlineById = function(req, res){
+    // Use the schema to find single Deadline
+    Deadline.findById(req.params.id, function (err, deadline) {
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+        // success
+        res.json(deadline);
+    });
+};
+
+// ENDPOINT: /deadlines METHOD: POST
+exports.postDeadline = function (req, res) {
+    // Create a new instance of the Deadline model
+    var deadline = new Deadline();
+
+    // Set the Deadline properties that came from the POST data
+    deadline.name = req.body.name;
+    deadline.creationDate = Date.now();
+    deadline.lastEditionDate = Date.now();
+    deadline.enabled = true;
+
+    deadline.save(function(err){
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+        // success
+        res.json({ message: 'Deadline created successfully!', data: deadline });
+    });
+};
+
+// ENDPOINT: /deadlines/:id METHOD: PUT
+exports.putDeadline = function(req, res){
+    Deadline.findById(req.params.id, function (err, deadline) {
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+
+        // Set the Deadline properties that came from the PUT data
+        deadline.name = req.body.name;
+        deadline.creationDate = req.body.creationDate;
+        deadline.lastEditionDate = Date.now();
+        deadline.enabled = req.body.enabled;
+
+        deadline.save(function(err){
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+            // success
+            res.json({message: 'Deadline updated successfully', data: deadline });
+        });
+    });
+};
+
+
+// ENDPOINT: /deadlines/:id METHOD: PATCH
+exports.patchDeadline = function (req, res) {
+    // use the schema to findById
+    Deadline.findById(req.params.id, function (err, deadline) {
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+
+        deadline.enabled = req.body.enabled;
+        deadline.lastEditionDate = Date.now();
+
+        deadline.save(function(err){
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+            var message = '';
+            if(deadline.enabled === true){
+                message = 'Deadline enabled successfully';
+            }else{
+                message = 'Deadline disbled successfully';
+            }
+            // success
+            res.json({message: message, data: deadline });
+        });
+    });
+
+};
+
+
+// ENDPOINT: /deadlines/:id METHOD: DELETE
+exports.deleteDeadline = function(req, res){
+    Deadline.findByIdAndRemove(req.params.id, function(err){
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+        // success
+        res.json({ message: 'Deadline deleted successfully!' });
+    });
+};

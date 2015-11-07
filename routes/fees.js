@@ -1,29 +1,130 @@
 // Load required packages
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+var logger = require('../config/logger').logger;
+var Fee = require('../models/fees').Fees;
 
-// Embebed Models
-var Bank = require('./banks').Banks;
-var Rate = require('./rates').Rates;
-var Service = require('./services').Services;
-var Language = require('./languages').Languages;
-var Currency = require('./currencies').Currencies;
+// ENDPOINT: /cuentries METHOD: GET
+exports.getFees = function(req, res){
+    // Assign all filters in a var to search
 
-// Define our Fee schema
-var FeeSchema = new Schema({
-    rate: [Rate.schema],
-    service: [Service.schema],
-    income: Number,
-    amountSalaries: Number,
-    valueLoan: Number,
-    deadlineMonths: Number,
-    bank: [Bank.schema],
-    currency: [Currency.schema],
-    lang: [Language.schema],
-    creationDate: Date,
-    lastEditionDate: Date,
-    enabled: Boolean
-},{ versionKey: false });
+    // Use the model to find all records filter by isoName
+    Fee.find(function (err, fees) {
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+        // Success
+        res.json(fees);
+    });
 
-// Export the Mongoose model
-module.exports.Fees = mongoose.model('Fees', FeeSchema);
+};
+
+// ENDPOINT: /fees/:id METHOD: GET
+exports.getFeeById = function(req, res){
+    // Use the schema to find single fee
+    Fee.findById(req.params.id, function (err, fee) {
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+        // success
+        res.json(fee);
+    });
+};
+
+// ENDPOINT: /fees METHOD: POST
+exports.postFee = function (req, res) {
+    // Create a new instance of the fee model
+    var fee = new Fee();
+
+    // Set the fee properties that came from the POST data
+    fee.name = req.body.name;
+    fee.creationDate = Date.now();
+    fee.lastEditionDate = Date.now();
+    fee.enabled = true;
+
+    fee.save(function(err){
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+        // success
+        res.json({ message: 'Fee created successfully!', data: fee });
+    });
+};
+
+// ENDPOINT: /fees/:id METHOD: PUT
+exports.putFee = function(req, res){
+    Fee.findById(req.params.id, function (err, fee) {
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+
+        // Set the fee properties that came from the PUT data
+        fee.name = req.body.name;
+        fee.creationDate = req.body.creationDate;
+        fee.lastEditionDate = Date.now();
+        fee.enabled = req.body.enabled;
+
+        fee.save(function(err){
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+            // success
+            res.json({message: 'Fee updated successfully', data: fee });
+        });
+    });
+};
+
+
+// ENDPOINT: /fees/:id METHOD: PATCH
+exports.patchFee = function (req, res) {
+    // use the schema to findById
+    Fee.findById(req.params.id, function (err, fee) {
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+
+        fee.enabled = req.body.enabled;
+        fee.lastEditionDate = Date.now();
+
+        fee.save(function(err){
+            // Check for errors and show message
+            if(err){
+                logger.error(err);
+                res.send(err);
+            }
+            var message = '';
+            if(fee.enabled === true){
+                message = 'Fee enabled successfully';
+            }else{
+                message = 'Fee disbled successfully';
+            }
+            // success
+            res.json({message: message, data: fee });
+        });
+    });
+
+};
+
+
+// ENDPOINT: /fees/:id METHOD: DELETE
+exports.deleteFee = function(req, res){
+    Fee.findByIdAndRemove(req.params.id, function(err){
+        // Check for errors and show message
+        if(err){
+            logger.error(err);
+            res.send(err);
+        }
+        // success
+        res.json({ message: 'Fee deleted successfully!' });
+    });
+};
