@@ -48,6 +48,7 @@ function setupRouter (router){
     var oauth2Routes = require('./oauth2');
     var rateRoutes = require('./rates');
     var serviceRoutes = require('./services');
+    var simulationRoutes = require('./simulations');
     var userRoutes = require('./users');
 
 
@@ -303,6 +304,25 @@ function setupRouter (router){
         .put(authRoutes.isAuthenticated, serviceRoutes.putService)
         .patch(authRoutes.isAuthenticated, serviceRoutes.patchService)
         .delete(authRoutes.isAuthenticated, serviceRoutes.deleteService);
+    /**
+     * ====================================================================
+     */
+
+    /**
+     *  Document:  SIMULATIONS.JS
+     *  Define routes where they are stored endpoints
+     */
+        // ENDPOINT: /simulations
+    router.route('/simulations')
+        .get(authRoutes.isAuthenticated, simulationRoutes.getSimulations)
+        .post(authRoutes.isAuthenticated, simulationRoutes.postSimulation);
+
+    // ENDPOINT: /simulations/:id
+    router.route('/simulations/:id')
+        .get(authRoutes.isAuthenticated, simulationRoutes.getSimulationById)
+        .put(authRoutes.isAuthenticated, simulationRoutes.putSimulation)
+        .patch(authRoutes.isAuthenticated, simulationRoutes.patchSimulation)
+        .delete(authRoutes.isAuthenticated, simulationRoutes.deleteSimulation);
     /**
      * ====================================================================
      */
