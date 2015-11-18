@@ -38,6 +38,7 @@ function setupRouter (router){
     var amountRoutes = require('./amounts');
     var bankRoutes = require('./banks');
     var clientRoutes = require('./clients');
+    var contactRoutes = require('./contact');
     var countryRoutes = require('./countries');
     var currencyRoutes = require('./currencies');
     var deadlineRoutes = require('./deadlines');
@@ -102,6 +103,26 @@ function setupRouter (router){
     // ENDPOINT: /clients/:id
     router.route('/clients/:id')
         .delete(authRoutes.isAuthenticated, clientRoutes.deleteClient);
+    /**
+     * ====================================================================
+     */
+
+
+    /**
+     *  Document:  CONTACTS.JS
+     *  Define routes where they are stored endpoints
+     */
+        // ENDPOINT: /contacts
+    router.route('/contacts')
+        .get(authRoutes.isAuthenticated, contactRoutes.getContacts)
+        .post(authRoutes.isAuthenticated, contactRoutes.postContact);
+
+    // ENDPOINT: /contacts/:id
+    router.route('/contacts/:id')
+        .get(authRoutes.isAuthenticated, contactRoutes.getContactById)
+        .put(authRoutes.isAuthenticated, contactRoutes.putContact)
+        .patch(authRoutes.isAuthenticated, contactRoutes.patchContact)
+        .delete(authRoutes.isAuthenticated, contactRoutes.deleteContact);
     /**
      * ====================================================================
      */
