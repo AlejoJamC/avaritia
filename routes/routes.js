@@ -43,7 +43,7 @@ function setupRouter (router){
     var currencyRoutes = require('./currencies');
     var deadlineRoutes = require('./deadlines');
     var feeRoutes = require('./fees');
-    var financialProfileRoutes = require('./financialProfiles');
+    //var financialProfileRoutes = require('./financialProfiles');
     var languageRoutes = require('./languages');
     var oauth2Routes = require('./oauth2');
     var rateRoutes = require('./rates');
@@ -212,7 +212,7 @@ function setupRouter (router){
     /**
      *  Document:  FINANCIALPROFILES.JS
      *  Define routes where they are stored endpoints
-     */
+     *
         // ENDPOINT: /financial/profiles
     router.route('/financial/profiles')
         .get(authRoutes.isAuthenticated, financialProfileRoutes.getFinancialProfiles)
@@ -224,7 +224,7 @@ function setupRouter (router){
         .put(authRoutes.isAuthenticated, financialProfileRoutes.putFinancialProfile)
         .patch(authRoutes.isAuthenticated, financialProfileRoutes.patchFinancialProfile)
         .delete(authRoutes.isAuthenticated, financialProfileRoutes.deleteFinancialProfile);
-    /**
+    **
      * ====================================================================
      */
 
