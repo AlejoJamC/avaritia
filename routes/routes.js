@@ -56,13 +56,13 @@ function setupRouter (router){
      *  Document:  AMOUNTS.JS
      *  Define routes where they are stored endpoints
      */
-        // ENDPOINT: /banks
-    router.route('/banks')
+        // ENDPOINT: /amounts
+    router.route('/amounts')
         .get(authRoutes.isAuthenticated, amountRoutes.getAmounts)
         .post(authRoutes.isAuthenticated, amountRoutes.postAmount);
 
-    // ENDPOINT: /banks/:id
-    router.route('/banks/:id')
+    // ENDPOINT: /amounts/:id
+    router.route('/amounts/:id')
         .get(authRoutes.isAuthenticated, amountRoutes.getAmountById)
         .put(authRoutes.isAuthenticated, amountRoutes.putAmount)
         .patch(authRoutes.isAuthenticated, amountRoutes.patchAmount)
