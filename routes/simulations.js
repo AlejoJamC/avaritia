@@ -12,6 +12,7 @@ var Simulation = require('../models/simulations').Simulations;
 var Bank = require('../models/banks').Banks;
 var Service = require('../models/services').Services;
 var Rate = require('../models/rates').Rates;
+var BRS = require('../models/bankRateService').BankRateService;
 
 // ENDPOINT: /simulations METHOD: GET
 // ENDPOINT: /simulations?id=value&bank=value METHOD: GET
@@ -64,38 +65,95 @@ exports.getSimulationById = function(req, res){
 
 // ENDPOINT: /simulations METHOD: POST
 exports.postSimulation = function (req, res) {
-    // Create a new instance of the Simulation model
-    var simulation = new Simulation();
+    var tabla = [];
+    var prestamo = req.body.prestamo;
+    var meses = req.body.meses;
+    var idBanco = req.body.idBanco;
+    var idServicio = req.body.idServicio;
+    var idTasa = req.body.idTasa;
+    logger.info(prestamo);
+    logger.info(meses);
+    logger.info(idBanco);
+    logger.info(idServicio);
+    logger.info(idTasa);
 
-    logger.info(req.body.rateId);
 
-    // Set the Simulation properties that came from the POST data
-    simulation.rateId = req.body.rateId;
-    simulation.rate = req.body.rate;
-    simulation.serviceId = req.body.serviceId;
-    simulation.fees.income = req.body.fees.income;
-    simulation.fees.valueLoan = req.body.fees.valueLoan;
-    simulation.fees.amountMonths = req.body.fees.amountMonths;
-    simulation.deadlines.income = req.body.deadlines.income;
-    simulation.deadlines.valueLoan = req.body.deadlines.valueLoan;
-    simulation.deadlines.monthlyValue = req.body.deadlines.monthlyValue;
-    simulation.amount.income = req.body.amount.income;
-    simulation.amount.monthlyValue = req.body.amount.monthlyValue;
-    simulation.amount.amountMonths = req.body.amount.amountMonths;
-    simulation.creationDate = Date.now();
-    simulation.lastEditionDate = Date.now();
-    simulation.enabled = true;
 
-    simulation.save(function(err){
+    BRS.find({rateId:idTasa, serviceId: idServicio,bankId: idBanco},function (err, brsObject) {
         // Check for errors and show message
         if(err){
             logger.error(err);
             res.send(err);
         }
+
+
+
+        // Get the return objet
+        console.log(brsObject);
+        logger.info(brsObject[0].rateValue);
+        var tasa = brsObject[0].rateValue;
+        var tasames = tasa/12;
+        var cuotanum = 0;
+        var saldo = prestamo;
+        var elevado = Math.pow((1 + tasames), meses);
+        var numerador = (tasames * elevado) * prestamo;
+        var denominador = elevado -1;
+        var cuotafija = numerador/denominador;
+        var interes = prestamo * tasames;
+        var capital = cuotafija - interes;
+
+        for(var i =0; i < meses; i++){
+            tabla.push({
+                cuotanum: cuotanum + i,
+                cuotafija: cuotafija,
+                intereses: interes,
+                capital: capital,
+                saldo: saldo
+            });
+
+            saldo = saldo - capital;
+            interes = saldo * tasames;
+            capital = cuotafija - interes;
+        }
+        console.log(tabla);
         // success
-        res.json({ message: 'Simulation created successfully!', data: simulation });
+        res.json(tabla);
     });
 };
+
+//// ENDPOINT: /simulations METHOD: POST
+//exports.postSimulation = function (req, res) {
+//    // Create a new instance of the Simulation model
+//    var simulation = new Simulation();
+//
+//    // Set the Simulation properties that came from the POST data
+//    simulation.rateId = req.body.rateId;
+//    simulation.rate = req.body.rate;
+//    simulation.serviceId = req.body.serviceId;
+//    simulation.fees.income = req.body.fees.income;
+//    simulation.fees.valueLoan = req.body.fees.valueLoan;
+//    simulation.fees.amountMonths = req.body.fees.amountMonths;
+//    simulation.deadlines.income = req.body.deadlines.income;
+//    simulation.deadlines.valueLoan = req.body.deadlines.valueLoan;
+//    simulation.deadlines.monthlyValue = req.body.deadlines.monthlyValue;
+//    simulation.amount.income = req.body.amount.income;
+//    simulation.amount.monthlyValue = req.body.amount.monthlyValue;
+//    simulation.amount.amountMonths = req.body.amount.amountMonths;
+//    simulation.creationDate = Date.now();
+//    simulation.lastEditionDate = Date.now();
+//    simulation.enabled = true;
+//
+//    simulation.save(function(err){
+//        // Check for errors and show message
+//        if(err){
+//            logger.error(err);
+//            res.send(err);
+//        }
+//
+//        // success
+//        res.json({ message: 'Simulation created successfully!', data: simulation });
+//    });
+//};
 
 // ENDPOINT: /simulations/:id METHOD: PUT
 exports.putSimulation = function(req, res){
