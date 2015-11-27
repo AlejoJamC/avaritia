@@ -7,6 +7,7 @@
  */
 
 // Load required packages
+var mongoose = require('mongoose');
 var logger = require('../config/logger').logger;
 var Simulation = require('../models/simulations').Simulations;
 var Bank = require('../models/banks').Banks;
@@ -77,6 +78,9 @@ exports.postSimulation = function (req, res) {
     logger.info(idServicio);
     logger.info(idTasa);
 
+    idTasa = mongoose.Types.ObjectId(idTasa);
+    idServicio = mongoose.Types.ObjectId(idServicio);
+    idBanco = mongoose.Types.ObjectId(idBanco);
 
 
     BRS.find({rateId:idTasa, serviceId: idServicio,bankId: idBanco},function (err, brsObject) {
@@ -92,17 +96,21 @@ exports.postSimulation = function (req, res) {
         console.log(brsObject);
         logger.info(brsObject[0].rateValue);
         var tasa = brsObject[0].rateValue;
-        var tasames = tasa/12;
-        var cuotanum = 0;
+        var tasames = (tasa/12)/100;
+        logger.info(tasames);
+        var cuotanum = 1;
         var saldo = prestamo;
         var elevado = Math.pow((1 + tasames), meses);
         var numerador = (tasames * elevado) * prestamo;
-        var denominador = elevado -1;
-        var cuotafija = numerador/denominador;
-        var interes = prestamo * tasames;
-        var capital = cuotafija - interes;
+        var denominador = elevado - 1;
+        var cuotafija = (numerador/denominador) | 0;
+        var interes = (prestamo * tasames) | 0;
+        var capital = (cuotafija - interes) | 0;
 
         for(var i =0; i < meses; i++){
+            saldo = (saldo - capital) | 0;
+            saldo = saldo < 0 ? 0 : saldo;
+            if (cuotanum == meses) saldo = 0;
             tabla.push({
                 cuotanum: cuotanum + i,
                 cuotafija: cuotafija,
@@ -111,9 +119,10 @@ exports.postSimulation = function (req, res) {
                 saldo: saldo
             });
 
-            saldo = saldo - capital;
-            interes = saldo * tasames;
-            capital = cuotafija - interes;
+            interes = (saldo * tasames) | 0;
+            interes = interes < 0 ? 0 : interes;
+            capital = (cuotafija - interes) | 0;
+            capital = capital < 0 ? 0 : capital;
         }
         console.log(tabla);
         // success
