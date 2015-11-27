@@ -37,6 +37,7 @@ function setupRouter (router){
     var authRoutes = require('./auth');
     var amountRoutes = require('./amounts');
     var bankRoutes = require('./banks');
+    var brsRoutes = require('./bankRateService');
     var clientRoutes = require('./clients');
     var contactRoutes = require('./contact');
     var countryRoutes = require('./countries');
@@ -87,6 +88,25 @@ function setupRouter (router){
         .put(authRoutes.isAuthenticated, bankRoutes.putBank)
         .patch(authRoutes.isAuthenticated, bankRoutes.patchBank)
         .delete(authRoutes.isAuthenticated, bankRoutes.deleteBank);
+    /**
+     * ====================================================================
+     */
+
+    /**
+     *  Document:  BANKRATESERVICE.JS
+     *  Define routes where they are stored endpoints
+     */
+        // ENDPOINT: /brs
+    router.route('/brs')
+        .get(authRoutes.isAuthenticated, brsRoutes.getBRS)
+        .post(authRoutes.isAuthenticated, brsRoutes.postBRS);
+
+    // ENDPOINT: /brs/:id
+    router.route('/brs/:id')
+        .get(authRoutes.isAuthenticated, brsRoutes.getBRSById)
+        .put(authRoutes.isAuthenticated, brsRoutes.putBRS)
+        .patch(authRoutes.isAuthenticated, brsRoutes.patchBRS)
+        .delete(authRoutes.isAuthenticated, brsRoutes.deleteBRS);
     /**
      * ====================================================================
      */
