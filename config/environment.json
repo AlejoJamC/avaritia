@@ -1,13 +1,13 @@
 {
   "devLocal": {
     "nosqlDB":"avaritia",
-    "port": 6500,
+    "port": 3050,
     "version": "/v0"
   },
 
   "devServer": {
     "nosqlDB":"avaritia",
-    "port": 3000,
+    "port": 3050,
     "version": "/v0"
   },
 
